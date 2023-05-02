@@ -1,0 +1,63 @@
+/* Enter your custom styles here */
+.hiddenControls {
+    height: 0px;
+    overflow: hidden;
+    display:none;
+}
+
+.imagePreview {
+    text-align: center;
+    color: #0854a0;
+}
+
+.actionIcon {
+    opacity: 0;
+}
+
+.imagePreview:hover .actionIcon {
+    opacity: 1;
+    transition: all 0.1s ease-in;
+    z-index: 9999;
+    transform: scale(1.2);
+}
+#fileUploader{
+    height: 0px;
+    overflow: hidden;
+}
+#image{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-size: 100% 100%;
+}
+
+div#container-com\.sap\.inventory---Logon--fileUploader-fu_input {
+    height: 0px;
+    overflow: hidden;
+}
+
+button#container-com\.sap\.inventory---Logon--fileUploader-fu_button {
+    overflow: hidden;
+    height: 0px;
+}
+#vboxid{
+    padding: 2em;
+}
+div#container-com\.sap\.inventory---Logon--image {
+    margin: 0 3em;
+    padding: 3e;
+}
+
+div#__data15 {
+    display: none;
+}
+#table0{
+    padding: 10%;
+}
+
+section#container-com\.sap\.inventory---LogonView--_IDGenPage1-cont {
+    background-image: url('../resources/pxfuel.jpg');
+    background-size: 100% 100%;
+}

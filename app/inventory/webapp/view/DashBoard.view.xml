@@ -1,0 +1,139 @@
+<mvc:View
+    controllerName="com.sap.inventory.controller.DashBoard"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m"
+    xmlns:f="sap.f" 
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:chart="sap.suite.ui.commons"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+>
+<f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
+        <f:profile>
+            <Avatar id="avatarId" press="onAavtarPress" initials="UI" />
+        </f:profile>
+</f:ShellBar>
+    <Page id="page" title="Analytics Dashboard" titleAlignment="Center">
+        <content>
+            <l:BlockLayout id="_IDGenBlockLayout1" background="Dashboard" visible="true">
+                <l:content>
+                    <l:BlockLayoutRow id="_IDGenBlockLayoutRow1">
+                        <l:content>
+                            <l:BlockLayoutCell id="Cell1" width="28.3rem">
+                                <l:content>
+                                    <chart:ChartContainer id="chartContainer1" title="Reports" showPersonalization="true"
+				autoAdjustHeight="true">
+                                        <chart:ChartContainerContent id="_IDGenChartContainerContent1" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
+                                            <chart:content>
+                                                <viz:VizFrame id="idVizFramebar1" uiConfig="{applicationSet: 'fiori'}" vizType="pie" legendVisible="true">
+                                                    <viz:dataset>
+                                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar1" data="{/ProductMaster}">
+                                                            <viz.data:dimensions>
+                                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinitionbar1" name="prodType" value="{prodType}" />
+                                                            </viz.data:dimensions>
+                                                            <viz.data:measures>
+                                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionbar1" group="1" name="qty" value="{qty}" />
+                                                            </viz.data:measures>
+                                                        </viz.data:FlattenedDataset>
+                                                    </viz:dataset>
+                                                    <viz:feeds>
+                                                        <viz.feeds:FeedItem id="valueAxisFeed1" uid="size" type="Measure" values="qty" />
+                                                        <viz.feeds:FeedItem id="_IDGenFeedItem1" uid="color" type="Dimension" values="prodType" />
+                                                    </viz:feeds>
+                                                </viz:VizFrame>
+                                            </chart:content>
+                                        </chart:ChartContainerContent>
+                                    </chart:ChartContainer>
+                                </l:content>
+                            </l:BlockLayoutCell>
+                            <l:BlockLayoutCell id="cell2" width="38.3rem">
+                                <l:content>
+                                    <chart:ChartContainer id="chartContainer2" title="Reports">
+                                        <chart:ChartContainerContent id="_IDGenChartContainerContent2" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
+                                            <chart:content>
+                                                <viz:VizFrame id="idVizFramebar2" uiConfig="{applicationSet: 'fiori'}" vizType="bar" legendVisible="true">
+                                                    <viz:dataset>
+                                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar2" data="{/ProductMaster}">
+                                                            <viz.data:dimensions>
+                                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinitionbar2" name="prodType" value="{prodType}" />
+                                                            </viz.data:dimensions>
+                                                            <viz.data:measures>
+                                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionbar2" group="1" name="qty" value="{qty}" />
+                                                            </viz.data:measures>
+                                                        </viz.data:FlattenedDataset>
+                                                    </viz:dataset>
+                                                    <viz:feeds>
+                                                        <viz.feeds:FeedItem id="valueAxisFeed2" uid="valueAxis" type="Measure" values="qty" />
+                                                        <viz.feeds:FeedItem id="_IDGenFeedItem2" uid="categoryAxis" type="Dimension" values="prodType" />
+                                                    </viz:feeds>
+                                                </viz:VizFrame>
+                                            </chart:content>
+                                        </chart:ChartContainerContent>
+                                    </chart:ChartContainer>
+                                </l:content>
+                            </l:BlockLayoutCell>
+                        </l:content>
+                    </l:BlockLayoutRow>
+                    <l:BlockLayoutRow id="_IDGenBlockLayoutRow2">
+                        <l:content>
+                            <l:BlockLayoutCell id="Cell3" width="38.3rem">
+                                <l:content>
+                                    <chart:ChartContainer id="chartContainer3" title="Reports">
+                                        <chart:ChartContainerContent id="_IDGenChartContainerContent3" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
+                                            <chart:content>
+                                                <viz:VizFrame id="idVizFramebar3" uiConfig="{applicationSet: 'fiori'}" vizType="line" legendVisible="true">
+                                                    <viz:dataset>
+                                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar3" data="{/ProductMaster}">
+                                                            <viz.data:dimensions>
+                                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinitionbar3" name="prodType" value="{prodType}" />
+                                                            </viz.data:dimensions>
+                                                            <viz.data:measures>
+                                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionbar3" group="1" name="qty" value="{qty}" />
+                                                            </viz.data:measures>
+                                                        </viz.data:FlattenedDataset>
+                                                    </viz:dataset>
+                                                    <viz:feeds>
+                                                        <viz.feeds:FeedItem id="valueAxisFeed3" uid="valueAxis" type="Measure" values="qty" />
+                                                        <viz.feeds:FeedItem id="_IDGenFeedItem3" uid="categoryAxis" type="Dimension" values="prodType" />
+                                                    </viz:feeds>
+                                                </viz:VizFrame>
+                                            </chart:content>
+                                        </chart:ChartContainerContent>
+                                    </chart:ChartContainer>
+                                </l:content>
+                            </l:BlockLayoutCell>
+                            <l:BlockLayoutCell id="cell4" width="38.3rem">
+                                <l:content>
+                                    <chart:ChartContainer id="chartContainer4" title="Reports">
+                                        <chart:ChartContainerContent id="_IDGenChartContainerContent4" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
+                                            <chart:content>
+                                                <viz:VizFrame id="idVizFramebar4" uiConfig="{applicationSet: 'fiori'}" vizType="bar" legendVisible="true">
+                                                    <viz:dataset>
+                                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar4" data="{/ProductMaster}">
+                                                            <viz.data:dimensions>
+                                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinitionbar4" name="prodType" value="{prodType}" />
+                                                            </viz.data:dimensions>
+                                                            <viz.data:measures>
+                                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionbar4" group="1" name="qty" value="{qty}" />
+                                                            </viz.data:measures>
+                                                        </viz.data:FlattenedDataset>
+                                                    </viz:dataset>
+                                                    <viz:feeds>
+                                                        <viz.feeds:FeedItem id="valueAxisFeed4" uid="valueAxis" type="Measure" values="qty" />
+                                                        <viz.feeds:FeedItem id="_IDGenFeedItem4" uid="categoryAxis" type="Dimension" values="prodType" />
+                                                    </viz:feeds>
+                                                </viz:VizFrame>
+                                            </chart:content>
+                                        </chart:ChartContainerContent>
+                                    </chart:ChartContainer>
+                                </l:content>
+                            </l:BlockLayoutCell>
+                        </l:content>
+                    </l:BlockLayoutRow>
+                </l:content>
+            </l:BlockLayout>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,115 @@
+<mvc:View controllerName="com.sap.inventory.controller.ProdMaster" 
+xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core" xmlns:fiori="sap.ui.webc.fiori" xmlns:f="sap.f" xmlns="sap.m" xmlns:form="sap.ui.layout.form">
+    <!-- <Shell id="_IDGenShell1" > -->
+    <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
+        <f:profile>
+            <Avatar id="avatarId"  press="onAavtarPress" initials="UI" />
+        </f:profile>
+    </f:ShellBar>
+    <App id="app">
+        <pages>
+            <Page id="page" title="Product Inventory" titleAlignment="Center">
+                <content>
+                    <Table items="{/ProductMaster}" id="table0"  selectionChange="onSelect">
+                        <headerToolbar>
+                            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                                <content>
+                                    <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                                    <SearchField id="searchField" width="30%" placeholder="search Product Category" visible="true" liveChange=".onFilterPosts" />
+                                    <Button id="createButton" text="Add Product" tooltip="New Product" visible="true" press="onOpenAddDialog">
+                                        <!-- <layoutData>
+                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow" />
+                                        </layoutData> -->
+                                    </Button>
+                                    <!-- <Button id="CreateInvButton" text="Add Inventory" tooltip="Add Inventory" visible="true" press="onNewInventory"> -->
+                                        <!-- <layoutData>
+                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData2" priority="NeverOverflow" />
+                                        </layoutData> -->
+                                    <!-- </Button> -->
+                                    <Button id="DashboardButton" text="View Dashboard" tooltip="View Dash Board" visible="true" press="onViewDashBoard">
+                                        <!-- <layoutData>
+                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData_DASH" priority="NeverOverflow" />
+                                        </layoutData> -->
+                                    </Button>
+                                    <!-- <Button id="saveButton" text="Save" type="Emphasized" visible="false" enabled="true" press="onSave" />
+                                    <Button id="editModeButton" visible="false" icon="sap-icon://edit" tooltip="Edit" press="onEditMode">
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData3" priority="NeverOverflow" />
+                                        </layoutData>
+                                    </Button> -->
+                                </content>
+                                <dependents>
+                                    <Dialog id="OpenDialog" title="Create Product Master">
+                                        <buttons>
+                                            <Button id="confirmCreate" text="Create" press=".onCreate" type="Emphasized" />
+                                            <Button id="cancelCreate" text="Cancel" press="onCancelDialog" type="Transparent" />
+                                        </buttons>
+                                        <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
+                                            <form:content>
+                                                <Label id="_IDGenLabel1" text="Product ID" required="true" />
+                                                <Input id="idSo" change="onNameChange" />
+                                                <Label id="_IDGenLabel2" text="Product Name" />
+                                                <Input id="idCustName" />
+                                                <Label id="_IDGenLabel3" text="Product Type" />
+                                                <Input id="idCustomer" />
+                                                <Label id="_IDGenLabel4" text="UOM" />
+                                                <Input id="idPo" />
+                                                <Label id="_IDGenLabel5" text="Created By" />
+                                                <Input id="idInqNumber" />
+                                            </form:content>
+                                        </form:SimpleForm>
+                                    </Dialog>
+                                </dependents>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <items>
+                            <ColumnListItem id="item0">
+                                <cells>
+                                    <Text id="id1" text="{prodId}" />
+                                    <Text id="id2" text="{prodName}" />
+                                    <Text id="id3" text="{prodCat}" />
+                                    <Text id="id4" text="{prodType}" />
+                                    <Text id="id5" text="{uom}" />
+                                    <Text id="id6" text="{active}" />                                  
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                        <columns>
+                            <Column id="_IDGenColumn1">
+                                <header>
+                                    <Label id="_IDGenLabel6" text="Product ID" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn2">
+                                <header>
+                                    <Label id="_IDGenLabel7" text="Product Name" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn3">
+                                <header>
+                                    <Label id="_IDGenLabel8" text="Product Category" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn4">
+                                <header>
+                                    <Label id="_IDGenLabel9" text="Product Type" />
+                                </header>
+                            </Column>                            
+                         <Column id="_IDGenColumn7">
+                                <header>
+                                    <Label id="_IDGenLabel12" text="UOM" />
+                                </header>
+                            </Column>                          
+                            <Column id="_IDGenColumn6">
+                                <header>
+                                    <Label id="_IDGenLabel11" text="Active" />
+                                </header>
+                            </Column>
+                        </columns>
+                    </Table>
+                </content>
+            </Page>
+        </pages>
+    </App>
+    <!-- </Shell> -->
+</mvc:View>

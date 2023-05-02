@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover
+		id="myPopover"
+		class="sapUiContentPadding"
+		
+		placement="Bottom" >
+		<beginButton justifyContent="Center" alignItems="Center" alignContent="Center">
+			<Button icon="sap-icon://log" text="Logout" press="handleCloseButton" />
+		</beginButton>
+		<content>
+			<!-- <Image id="popimg" displayShape="Circle" width="15em" /> -->
+			<Avatar id="popimg"
+							displaySize="XL"
+							displayShape="Circle"/>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

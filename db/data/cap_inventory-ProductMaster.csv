@@ -1,0 +1,42 @@
+prodId,prodCat,prodName,prodType,uom,active,qty
+P001,Electronics,Smartphone,Mobile Phones,Piece,True,100
+P002,Electronics,Laptop,Computers,Piece,True,50
+P003,Electronics,Headphones,Audio Accessories,Piece,True,200
+P004,Electronics,Power Bank,Mobile Accessories,Piece,True,150
+P005,Electronics,Smart TV,Televisions,Piece,True,20
+P006,Books,Harry Potter and the Philosopher's Stone,Novel,Piece,True,300
+P007,Books,To Kill a Mockingbird,Novel,Piece,True,250
+P008,Books,The Hitchhiker's Guide to the Galaxy,Science Fiction,Piece,True,175
+P009,Books,The Da Vinci Code,Thriller,Piece,True,150
+P010,Books,The Lord of the Rings,Fantasy,Piece,True,100
+P011,Beauty,Lipstick,Makeup,Piece,True,500
+P012,Beauty,Perfume,Fragrances,Piece,True,300
+P013,Beauty,Shampoo,Hair Care,Piece,True,1000
+P014,Beauty,Moisturizer,Skin Care,Piece,True,750
+P015,Beauty,Nail Polish,Makeup,Piece,True,600
+P016,Fashion,Shirt,Men's Clothing,Piece,True,400
+P017,Fashion,Pants,Men's Clothing,Piece,True,300
+P018,Fashion,Dress,Women's Clothing,Piece,True,200
+P019,Fashion,Skirt,Women's Clothing,Piece,True,150
+P020,Fashion,Shoes,Women's Footwear,Piece,True,100
+P021,Grocery,Rice,Grains,Kg,True,500
+P022,Grocery,Flour,Grains,Kg,True,250
+P023,Grocery,Sugar,Staples,Kg,True,150
+P024,Grocery,Dal,Grains,Kg,True,100
+P025,Grocery,Tea,Hot Beverages,Piece,True,1000
+P026,Home Appliances,Refrigerator,Kitchen Appliances,Piece,True,50
+P027,Home Appliances,Washing Machine,Laundry Appliances,Piece,True,30
+P028,Home Appliances,Microwave Oven,Kitchen Appliances,Piece,True,75
+P029,Home Appliances,Vacuum Cleaner,Cleaning Appliances,Piece,True,100
+P030,Home Appliances,Air Conditioner,Cooling Appliances,Piece,True,25
+P031,Toys,Action Figure,Boys' Toys,Piece,True,200
+P032,Toys,Doll,Girls' Toys,Piece,True,150
+P033,Toys,Puzzle,Educational Toys,Piece,True,100
+P034,Toys,Board Game,Family Games,Piece,True,75
+P035,Toys,Remote Control Car,Electronic Toys,Piece,True,50
+P036,Sports,Football,Outdoor Games,Piece,True,300
+P037,Sports,Cricket Bat,Cricket Equipment,Piece,True,250
+P038,Sports,Basketball,Basketball Equipment,Piece,True,200
+P039,Sports,Tennis Racket,Tennis Equipment,Piece,True,150
+P040,Sports,Yoga Mat,Yoga Equipment,Piece,True,100
+P041,Office Supplies,Notebook,Stationery,Piece,True,500

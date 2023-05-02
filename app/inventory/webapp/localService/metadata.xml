@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="UserService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Userdetail" EntityType="UserService.Userdetail"/>
+                <EntitySet Name="ProductMaster" EntityType="UserService.ProductMaster"/>
+                <EntitySet Name="ProductInv" EntityType="UserService.ProductInv"/>
+            </EntityContainer>
+            <EntityType Name="Userdetail">
+                <Key>
+                    <PropertyRef Name="username"/>
+                </Key>
+                <Property Name="username" Type="Edm.String" Nullable="false"/>
+                <Property Name="password" Type="Edm.String"/>
+                <Property Name="email" Type="Edm.String"/>
+                <Property Name="image" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ProductMaster">
+                <Key>
+                    <PropertyRef Name="prodId"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="prodId" Type="Edm.String" Nullable="false"/>
+                <Property Name="prodCat" Type="Edm.String"/>
+                <Property Name="prodName" Type="Edm.String"/>
+                <Property Name="prodType" Type="Edm.String"/>
+                <Property Name="uom" Type="Edm.String"/>
+                <Property Name="active" Type="Edm.Boolean"/>
+                <Property Name="qty" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="ProductInv">
+                <Key>
+                    <PropertyRef Name="addedOn"/>
+                </Key>
+                <Property Name="prodId" Type="Edm.String"/>
+                <Property Name="prodCat" Type="Edm.String"/>
+                <Property Name="prodType" Type="Edm.String"/>
+                <Property Name="uom" Type="Edm.String"/>
+                <Property Name="addedOn" Type="Edm.String" Nullable="false"/>
+                <Property Name="addedBy" Type="Edm.String"/>
+                <Property Name="qty" Type="Edm.String"/>
+                <Property Name="expDat" Type="Edm.String"/>
+                <Property Name="batch" Type="Edm.String"/>
+            </EntityType>
+            <Annotations Target="UserService.Userdetail/username">
+                <Annotation Term="Common.Label" String="Username"/>
+            </Annotations>
+            <Annotations Target="UserService.Userdetail/password">
+                <Annotation Term="Common.Label" String="Password"/>
+            </Annotations>
+            <Annotations Target="UserService.Userdetail/email">
+                <Annotation Term="Common.Label" String="Email"/>
+            </Annotations>
+            <Annotations Target="UserService.Userdetail/image">
+                <Annotation Term="Common.Label" String="Image"/>
+            </Annotations>
+            <Annotations Target="UserService.ProductMaster/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                </Annotations>
+                <Annotations Target="UserService.ProductMaster/createdBy">
+                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                    <Annotation Term="Core.Immutable" Bool="true"/>
+                    <Annotation Term="Core.Computed" Bool="true"/>
+                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                        </Annotations>
+                        <Annotations Target="UserService.ProductMaster/modifiedAt">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                            </Annotations>
+                            <Annotations Target="UserService.ProductMaster/modifiedBy">
+                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                <Annotation Term="Core.Computed" Bool="true"/>
+                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/prodId">
+                                        <Annotation Term="Common.Label" String="Product ID"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/prodCat">
+                                        <Annotation Term="Common.Label" String="Product Category"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/prodName">
+                                        <Annotation Term="Common.Label" String="Product Name"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/prodType">
+                                        <Annotation Term="Common.Label" String="Product Type"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/uom">
+                                        <Annotation Term="Common.Label" String="UOM"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/active">
+                                        <Annotation Term="Common.Label" String="Active"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductMaster/qty">
+                                        <Annotation Term="Common.Label" String="Quantity"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/prodId">
+                                        <Annotation Term="Common.Label" String="Product ID"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/prodCat">
+                                        <Annotation Term="Common.Label" String="Product Category"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/prodType">
+                                        <Annotation Term="Common.Label" String="Product Type"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/uom">
+                                        <Annotation Term="Common.Label" String="UOM"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/addedOn">
+                                        <Annotation Term="Common.Label" String="Added On"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/addedBy">
+                                        <Annotation Term="Common.Label" String="Added By"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/qty">
+                                        <Annotation Term="Common.Label" String="Qty"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/expDat">
+                                        <Annotation Term="Common.Label" String="Expiry Date"/>
+                                    </Annotations>
+                                    <Annotations Target="UserService.ProductInv/batch">
+                                        <Annotation Term="Common.Label" String="Batch No"/>
+                                    </Annotations>
+                                </Schema>
+                            </edmx:DataServices>
+                        </edmx:Edmx>

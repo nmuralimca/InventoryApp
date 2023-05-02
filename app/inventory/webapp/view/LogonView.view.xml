@@ -1,0 +1,80 @@
+<mvc:View controllerName="com.sap.inventory.controller.LogonView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+    xmlns:f="sap.f" xmlns:u="sap.ui.unified" 
+    xmlns:fiori="sap.ui.webc.fiori" 
+    xmlns="sap.m" xmlns:form="sap.ui.layout.form">
+
+    <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" />
+    <App id="app">
+        <Page id="_IDGenPage1" titleAlignment="Center" >
+            <content>
+            <VBox id="vboxid1" fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">      
+                <form:SimpleForm id="_IDGenSimpleForm1" editable="false" backgroundDesign="Translucent" layout="ResponsiveGridLayout" adjustLabelSpan="true" labelSpanL="4" labelSpanM="4" labelSpanS="12" columnsL="1" columnsM="1" emptySpanL="4" emptySpanM="4">
+                <form:content>
+                        <Label id="_IDGenLabel1" required="true" text="User Name" />
+                        <Input id="inp_usernameId" />
+                        <Label id="_IDGenLabel2" text="Password" required="true" />
+                        <Input id="inp_passwordId" type="Password" />
+                        <Label id="Label1" />
+                        <Button id="BtnLogin" text="Login" type="Accept" press="onLoginUser" />
+                        <Button id="Btnnewuser" text="Register" type="Accept" press="onOpenAddDialog" />
+                        <Button id="BtnForgetPwd" text="Forget Password" type="Accept" press="onForgetPwdDialog" />
+                    </form:content>
+                </form:SimpleForm> 
+            </VBox>
+                <Dialog id="OpenDialog" title="New User Registration">
+                    <buttons>
+                        <Button id="confirmCreate" text="Sign Up" press=".onCreate" type="Emphasized" />
+                        <Button id="cancelCreate" text="Cancel" press="onCancelDialog" type="Transparent" />
+                    </buttons>
+                    <form:SimpleForm id="_IDGenSimpleForm2" editable="true" layout="ResponsiveGridLayout">
+                        <form:content>
+                            <VBox id="vboxid" fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+                                <items>
+                                    <u:FileUploader name="uploadFile"  change="onChangeImage" id="fileUploader" class="hiddenControls" fileType="jpg,png,jpeg" visible="true" sendXHR="true" />
+                                    <Label labelFor="fileUploader" id="fileUploader-label" class="hiddenControls" />
+                                    <GenericTile class="imagePreview" press="onEditImage" id="image" scope="Actions" subheader="Upload Profile Picture">
+                                        <tileContent>
+                                            <TileContent id="iconContent">
+                                                <content>
+                                                    <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://add" size="2em" id="actionIcon" class="actionIcon" />
+                                                </content>
+                                            </TileContent>
+                                        </tileContent>
+                                    </GenericTile>
+                                    <Label labelFor="image" id="fileUploader-label11" class="hiddenControls" />
+                                </items>
+                            </VBox>
+                            <Label id="_IDGenLab" text="User Name" required="true" />
+                            <Input id="idNewuser" />
+                            <Label id="_IDGenLabemail" text="Email ID" required="true" />
+                            <Input id="idnewEmail" type="Email" />
+                            <Label id="_IDGenLabel6" text="Password" required="true" />
+                            <Input id="idPassword" type="Password" liveChange="onPasswordChange" />
+                            <Label id="_IDGenLabel3" text="Confirm Password" required="true" />
+                            <Input id="idConfirmPassowrd" type="Password" liveChange="onPasswordChange" />
+                            <Label id="idVerifyPassowrd" />
+                        </form:content>
+                    </form:SimpleForm>
+                </Dialog>
+                 <Dialog id="OpenForgetPwd" title="Reset Forget Password" binding="{/Userdetail}">
+                    <buttons>
+                        <Button id="confirmPwd" text="Save" press=".onCreatePwd" type="Emphasized" />
+                        <Button id="cancelPwd" text="Cancel" press="onCancelDialogPwd" type="Transparent" />
+                    </buttons>
+                    <form:SimpleForm id="ForgetPwdForm" editable="true" layout="ResponsiveGridLayout">
+                        <form:content>
+                            <Label id="ForgetLabelEmail" text="User Name" required="true" />
+                            <Input id="ForgetUser" type="Text" />
+                            <Label id="ForgetLabelPwd" text="Password" required="true" />
+                            <Input id="ForgetPwd" type="Password" liveChange="onPasswordChange" />
+                            <Label id="ForgetLabelCPwd" text="Confirm Password" required="true" />
+                            <Input id="ForgetCPwd" type="Password" liveChange="onPasswordChange" />
+                            <Label id="idVerifyForgetPwd" />
+                        </form:content>
+                    </form:SimpleForm>
+                </Dialog>
+            </content>
+        </Page>
+    </App>
+</mvc:View>
