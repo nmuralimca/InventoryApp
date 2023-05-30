@@ -58,6 +58,24 @@ div#__data15 {
 }
 
 section#container-com\.sap\.inventory---LogonView--_IDGenPage1-cont {
-    background-image: url('../resources/pxfuel.jpg');
+    background-image: url('../resources/graybg.jpg');
+    background-size: 100% 100%;
+}
+.sapUiSizeCompact .sapFShellBar {
+    height: 5.25rem;
+}
+.sapFShellBar .sapFShellBarHomeIcon {
+    height: 5rem;
+    vertical-align: middle
+}
+.sapFShellBar .sapFShellBarHomeIcon {
+    max-height: 5rem;
+}
+button#__button1 {
+    display: none;
+}
+
+.sapMPageBgStandard {
+    background-image: url('../resources/graybg.jpg');
     background-size: 100% 100%;
 }

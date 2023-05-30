@@ -101,7 +101,7 @@ sap.ui.define([
                         if (sNote) {
                             oContextBinding.getBoundContext().setProperty("password", NewPassword);
                             oController.getView().byId("OpenForgetPwd").close();
-                            MessageBox.show("Password Reset Completed");
+                            MessageBox.success("Password Reset Completed");
                         }
                     }).catch(oError => {
                         MessageBox.error(oError.message);
@@ -185,7 +185,7 @@ sap.ui.define([
                         oController.getView().getModel().submitBatch("user")
                             .then(() => {
                                 oController.getView().byId("OpenDialog").close();
-                                MessageBox.show("Save completed");
+                                MessageBox.success("Save completed");
                             })
                             .catch(oError => {
                                 MessageBox.error(oError.message);

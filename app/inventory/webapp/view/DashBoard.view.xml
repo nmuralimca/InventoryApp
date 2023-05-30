@@ -10,28 +10,57 @@
     xmlns:chart="sap.suite.ui.commons"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 >
-<f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
+<f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="false" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
         <f:profile>
             <Avatar id="avatarId" press="onAavtarPress" initials="UI" />
         </f:profile>
 </f:ShellBar>
     <Page id="page" title="Analytics Dashboard" titleAlignment="Center">
         <content>
+        <HBox id="_IDGenHbox1" justifyContent="Center" alignContent="Center" >
+            <GenericTile id="_IDGenGenericTile1" class="sapUiMediumMargin tileLayout" header="Top Selling Individual Product" >
+                <TileContent id="_IDGenTileContent1" unit="Stocks" >			
+                        <FeedContent id="feed_prod" valueColor="Good"/>
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="_IDGenGenericTile2" class="sapUiMediumMargin tileLayout" header="Top Selling Individual Product Category" press="onPress" >
+                <TileContent id="_IDGenTileContent2" unit="Stocks">			
+                        <FeedContent id="feed_cat" valueColor="Good"/>
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="_IDGenGenericTile3" class="sapUiMediumMargin tileLayout" header="Top Selling Individual Product Type" press="onPress" >
+                <TileContent id="_IDGenTileContent3" unit="Stocks">			
+                        <FeedContent id="feed_type" valueColor="Good"/>
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="generic" class="sapUiMediumMargin tileLayout" header="Change in Stocks Sold" press="onPress" >
+                <TileContent id="_IDGenTileContent4" unit="Percent">
+                    <NumericContent id="num_content" scale="%"  valueColor="Critical"  withMargin="false" />
+                </TileContent>
+            </GenericTile>
+                        <GenericTile id="_IDGenGenericTile4" class="sapUiMediumMargin tileLayout" header="Store with Highest Transfered Stocks" >
+                <TileContent id="_IDGenTileContent5" unit="Stocks" >			
+                        <FeedContent id="feed_store" valueColor="Good"/>
+                </TileContent>
+            </GenericTile>
+        </HBox>
+
             <l:BlockLayout id="_IDGenBlockLayout1" background="Dashboard" visible="true">
                 <l:content>
                     <l:BlockLayoutRow id="_IDGenBlockLayoutRow1">
                         <l:content>
-                            <l:BlockLayoutCell id="Cell1" width="28.3rem">
+                            <l:BlockLayoutCell id="Cell1" width="38.3rem">
                                 <l:content>
-                                    <chart:ChartContainer id="chartContainer1" title="Reports" showPersonalization="true"
-				autoAdjustHeight="true">
-                                        <chart:ChartContainerContent id="_IDGenChartContainerContent1" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
+                                    <chart:ChartContainer id="chartContainer1" showPersonalization="true" autoAdjustHeight="true">
+                                        <chart:ChartContainerContent id="_IDGenChartContainerContent1" icon="sap-icon://horizontal-stacked-chart" >
                                             <chart:content>
-                                                <viz:VizFrame id="idVizFramebar1" uiConfig="{applicationSet: 'fiori'}" vizType="pie" legendVisible="true">
+                                                <viz:VizFrame id="idVizFramebar1" uiConfig="{applicationSet: 'fiori'}" vizType="pie"  
+                                                vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'Trending Categories'}, dataLabel:{ visible: true }}" 
+                                                legendVisible="true">
                                                     <viz:dataset>
                                                         <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar1" data="{/ProductMaster}">
                                                             <viz.data:dimensions>
-                                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinitionbar1" name="prodType" value="{prodType}" />
+                                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinitionbar1" name="prodCat" value="{prodCat}" />
                                                             </viz.data:dimensions>
                                                             <viz.data:measures>
                                                                 <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionbar1" group="1" name="qty" value="{qty}" />
@@ -40,7 +69,7 @@
                                                     </viz:dataset>
                                                     <viz:feeds>
                                                         <viz.feeds:FeedItem id="valueAxisFeed1" uid="size" type="Measure" values="qty" />
-                                                        <viz.feeds:FeedItem id="_IDGenFeedItem1" uid="color" type="Dimension" values="prodType" />
+                                                        <viz.feeds:FeedItem id="_IDGenFeedItem1" uid="color" type="Dimension" values="prodCat" />
                                                     </viz:feeds>
                                                 </viz:VizFrame>
                                             </chart:content>
@@ -50,10 +79,11 @@
                             </l:BlockLayoutCell>
                             <l:BlockLayoutCell id="cell2" width="38.3rem">
                                 <l:content>
-                                    <chart:ChartContainer id="chartContainer2" title="Reports">
+                                    <chart:ChartContainer id="chartContainer2">
                                         <chart:ChartContainerContent id="_IDGenChartContainerContent2" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
                                             <chart:content>
-                                                <viz:VizFrame id="idVizFramebar2" uiConfig="{applicationSet: 'fiori'}" vizType="bar" legendVisible="true">
+                                                <viz:VizFrame id="idVizFramebar2" uiConfig="{applicationSet: 'fiori'}" vizType="bar" 
+                                                            vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'Trending Products'}}" legendVisible="true">
                                                     <viz:dataset>
                                                         <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar2" data="{/ProductMaster}">
                                                             <viz.data:dimensions>
@@ -80,10 +110,11 @@
                         <l:content>
                             <l:BlockLayoutCell id="Cell3" width="38.3rem">
                                 <l:content>
-                                    <chart:ChartContainer id="chartContainer3" title="Reports">
+                                    <chart:ChartContainer id="chartContainer3">
                                         <chart:ChartContainerContent id="_IDGenChartContainerContent3" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
                                             <chart:content>
-                                                <viz:VizFrame id="idVizFramebar3" uiConfig="{applicationSet: 'fiori'}" vizType="line" legendVisible="true">
+                                                <viz:VizFrame id="idVizFramebar3" uiConfig="{applicationSet: 'fiori'}" vizType="line" legendVisible="true"
+                                                              vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'Trending Product Types'}}" >
                                                     <viz:dataset>
                                                         <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar3" data="{/ProductMaster}">
                                                             <viz.data:dimensions>
@@ -109,7 +140,8 @@
                                     <chart:ChartContainer id="chartContainer4" title="Reports">
                                         <chart:ChartContainerContent id="_IDGenChartContainerContent4" icon="sap-icon://horizontal-stacked-chart" title="Stacked_bar Chart">
                                             <chart:content>
-                                                <viz:VizFrame id="idVizFramebar4" uiConfig="{applicationSet: 'fiori'}" vizType="bar" legendVisible="true">
+                                                <viz:VizFrame id="idVizFramebar4" uiConfig="{applicationSet: 'fiori'}" vizType="bar" legendVisible="true"
+                                                               vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'Trending Categories'}}" >
                                                     <viz:dataset>
                                                         <viz.data:FlattenedDataset id="_IDGenFlattenedDatasetbar4" data="{/ProductMaster}">
                                                             <viz.data:dimensions>

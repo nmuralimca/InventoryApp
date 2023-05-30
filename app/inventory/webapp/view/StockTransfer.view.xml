@@ -1,0 +1,118 @@
+<mvc:View controllerName="com.sap.inventory.controller.StockTransfer" 
+xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core" xmlns:fiori="sap.ui.webc.fiori" xmlns:f="sap.f" xmlns="sap.m" xmlns:form="sap.ui.layout.form">
+    <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
+        <f:profile>
+            <Avatar id="avatarId"  press="onAavtarPress" initials="UI" />
+        </f:profile>
+    </f:ShellBar>
+    <App id="app">
+        <pages>
+            <Page id="page" title="Transfer of products" titleAlignment="Center">
+                <content>
+<!--                    mode="MultiSelect"    -->
+                    <Table 
+                    items="{/ProductInv}" id="table0"  selectionChange="onSelect">
+                        <headerToolbar>
+                            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                                <content>
+                                    <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                                    <SearchField id="searchField" width="30%" placeholder="search Product Category" visible="true" liveChange=".onFilterPosts" />
+<!--                                    <Button id="CheckoutButton" text="Checkout" tooltip="Checkout" visible="true" type="Emphasized" press="onCheckout">
+                                    </Button> -->
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <items>
+                            <ColumnListItem id="item0">
+                                <cells>
+                                    <Text id="id1" text="{prodId}" />
+                                    <Text id="id2" text="{prodName}" />
+                                    <Text id="id3" text="{prodCat}" />
+                                    <Text id="id4" text="{prodType}" />
+                                    <Text id="id5" text="{stocks}" />
+                                    <Text id="id6" text="{uom}" />
+                                    <Text id="id7" text="{status}" />                                  
+                                    <Button xmlns="sap.m" text="Transfer" id="button0" icon="sap-icon://edit"
+                                            press="onbuttonpress"/>      
+                                    <Text id="id8" text="{addedOn}" visible="false"/>                                          
+                                </cells>
+                            </ColumnListItem>
+                        </items>                        
+                        <columns>
+                            <Column id="_IDGenColumn1">
+                                <header>
+                                    <Label id="_IDGenLabel6" text="Product ID" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn2">
+                                <header>
+                                    <Label id="_IDGenLabel7" text="Product Name" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn3">
+                                <header>
+                                    <Label id="_IDGenLabel8" text="Product Category" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn4">
+                                <header>
+                                    <Label id="_IDGenLabel9" text="Product Type" />
+                                </header>
+                            </Column>                            
+                            <Column id="_IDGenColumn5">
+                                <header>
+                                    <Label id="_IDGenLabel10" text="Stocks" />
+                                </header>
+                            </Column>                            
+                         <Column id="_IDGenColumn6">
+                                <header>
+                                    <Label id="_IDGenLabel11" text="UOM" />
+                                </header>
+                            </Column>                          
+                            <Column id="_IDGenColumn7">
+                                <header>
+                                    <Label id="_IDGenLabel12" text="Status" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn8">
+                                <header>
+                                    <Label id="_IDGenLabel13" text="Transfer to Store" />
+                                </header>
+                            </Column>
+                            <Column id="_IDGenColumn9" visible="false">
+                                <header>
+                                    <Label id="_IDGenLabel14" text="Added On" />
+                                </header>
+                            </Column>
+                        </columns>
+                                <dependents>
+                                    <Dialog id="OpenStore" title="Dispatch to Store">
+                                        <buttons>
+                                            <Button id="confirmCreate" text="Move" press=".onCreate" type="Emphasized" />
+                                            <Button id="cancelCreate" text="Cancel" press="onCancelDialog" type="Transparent" />
+                                        </buttons>
+                                        <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
+                                            <form:content>
+                                                <Label id="_IDGenLabel1" text="Store ID" required="true" />
+                                                <ComboBox
+                                                    id="combobox1"
+                                                    showSecondaryValues= "true"
+                                                    change=".onComboChange"
+                                                    items="{
+                                                        path: '/StoreMaster',
+                                                        sorter: { path: 'storeName' }
+                                                    }">
+                                                    <core:ListItem id="_IDGenListItem1" key="{storeId}" text="{storeName}"/>
+                                                </ComboBox>        
+                                                <Label id="_IDGenLabel2" text="Stocks" required="true" />
+                                                <Input id="idSk" type="Number" change="onStocks" />
+                                            </form:content>
+                                        </form:SimpleForm>
+                                    </Dialog>
+                                </dependents>                        
+                    </Table>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

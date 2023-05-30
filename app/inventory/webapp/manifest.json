@@ -122,6 +122,10 @@
                     "name": "ProdMaster",
                     "pattern": "ProdMaster",
                     "target": "ProdMaster"
+                },{
+                    "name": "StockTransfer",
+                    "pattern": "StockTransfer",
+                    "target": "StockTransfer"
                 }
             ],
             "targets": {
@@ -145,6 +149,13 @@
                     "clearControlAggregation": false,
                     "viewId": "ProdMaster",
                     "viewName": "ProdMaster"
+                },
+                "StockTransfer": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "StockTransfer",
+                    "viewName": "StockTransfer"
                 },
                 "DashBoard": {
                     "viewType": "XML",

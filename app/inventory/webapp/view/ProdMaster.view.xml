@@ -1,42 +1,23 @@
 <mvc:View controllerName="com.sap.inventory.controller.ProdMaster" 
 xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core" xmlns:fiori="sap.ui.webc.fiori" xmlns:f="sap.f" xmlns="sap.m" xmlns:form="sap.ui.layout.form">
     <!-- <Shell id="_IDGenShell1" > -->
-    <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
+    <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="false" showNavButton="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" navButtonPressed="handleBackButtonPressed">
         <f:profile>
             <Avatar id="avatarId"  press="onAavtarPress" initials="UI" />
         </f:profile>
     </f:ShellBar>
     <App id="app">
         <pages>
-            <Page id="page" title="Product Inventory" titleAlignment="Center">
+            <Page id="page" title="Product Master" titleAlignment="Center">
                 <content>
-                    <Table items="{/ProductMaster}" id="table0"  selectionChange="onSelect">
+                    <Table items="{/ProductMaster}" id="table0"  selectionChange="onSelect" growingThreshold="15" growing="true" alternateRowColors="true">
                         <headerToolbar>
                             <OverflowToolbar id="_IDGenOverflowToolbar1">
                                 <content>
                                     <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                                     <SearchField id="searchField" width="30%" placeholder="search Product Category" visible="true" liveChange=".onFilterPosts" />
-                                    <Button id="createButton" text="Add Product" tooltip="New Product" visible="true" press="onOpenAddDialog">
-                                        <!-- <layoutData>
-                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow" />
-                                        </layoutData> -->
-                                    </Button>
-                                    <!-- <Button id="CreateInvButton" text="Add Inventory" tooltip="Add Inventory" visible="true" press="onNewInventory"> -->
-                                        <!-- <layoutData>
-                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData2" priority="NeverOverflow" />
-                                        </layoutData> -->
-                                    <!-- </Button> -->
-                                    <Button id="DashboardButton" text="View Dashboard" tooltip="View Dash Board" visible="true" press="onViewDashBoard">
-                                        <!-- <layoutData>
-                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData_DASH" priority="NeverOverflow" />
-                                        </layoutData> -->
-                                    </Button>
-                                    <!-- <Button id="saveButton" text="Save" type="Emphasized" visible="false" enabled="true" press="onSave" />
-                                    <Button id="editModeButton" visible="false" icon="sap-icon://edit" tooltip="Edit" press="onEditMode">
-                                        <layoutData>
-                                            <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData3" priority="NeverOverflow" />
-                                        </layoutData>
-                                    </Button> -->
+                                    <Button id="createButton" text="Add Product" tooltip="New Product" visible="true" press="onOpenAddDialog" type="Emphasized"/>
+                                    <Button id="DashboardButton" text="View Dashboard" tooltip="View Dash Board" visible="true" press="onViewDashBoard" type="Emphasized"/>
                                 </content>
                                 <dependents>
                                     <Dialog id="OpenDialog" title="Create Product Master">
@@ -47,15 +28,21 @@ xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core" xmlns:f
                                         <form:SimpleForm id="_IDGenSimpleForm1" editable="true" layout="ResponsiveGridLayout">
                                             <form:content>
                                                 <Label id="_IDGenLabel1" text="Product ID" required="true" />
-                                                <Input id="idSo" change="onNameChange" />
+                                                <Input id="idProdId" change="onNameChange" />
                                                 <Label id="_IDGenLabel2" text="Product Name" />
-                                                <Input id="idCustName" />
-                                                <Label id="_IDGenLabel3" text="Product Type" />
-                                                <Input id="idCustomer" />
-                                                <Label id="_IDGenLabel4" text="UOM" />
-                                                <Input id="idPo" />
-                                                <Label id="_IDGenLabel5" text="Created By" />
-                                                <Input id="idInqNumber" />
+                                                <Input id="idProdName" />
+                                                <Label id="_IDGenLabel3" text="Product Category" />
+                                                <Input id="idProdCat" />
+                                                <Label id="_IDGenLabel4" text="Product Type" />
+                                                <Input id="idProdType" />
+                                                <Label id="_IDGenLabel5" text="UOM" />
+                                                <Input id="idUom" />
+                                                <Label id="_idGenLabel6" text="Active" />
+                                                <Switch id="ActiveSwitch" state="true" customTextOn="Yes" customTextOff="No">
+                                                    <layoutData>
+                                                        <FlexItemData id="_IDGenFlexItemData1" growFactor="1" />
+                                                    </layoutData>
+                                                </Switch>
                                             </form:content>
                                         </form:SimpleForm>
                                     </Dialog>

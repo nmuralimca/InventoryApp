@@ -12,6 +12,7 @@ sap.ui.define([
         "use strict";
         var oController;
         var image, data;
+        var user;
         return Controller.extend("com.sap.inventory.controller.ProdMaster", {
             onInit: function () {
 
@@ -19,6 +20,7 @@ sap.ui.define([
                 if (sap.ui.getCore().getModel("logonData") != undefined) {
                     data = sap.ui.getCore().getModel("logonData").getProperty("/userdet");
                     image = data[0].img;
+                    user = data[0].username
                     image = image.replace(/#/, ',');
                     console.log(image);
 
@@ -66,34 +68,41 @@ sap.ui.define([
                 oController.getOwnerComponent().getRouter().navTo("ProdView");
             },
             onOpenAddDialog: function () {
+               oController.getView().byId("idProdId").setValue("");
+               oController.byId("idProdName").setValue("");
+               oController.byId("idProdCat").setValue("");
+               oController.byId("idProdType").setValue("");
+               oController.byId("idUom").setValue("");
+               
                 oController.getView().byId("OpenDialog").open();
             },
             onCancelDialog: function (oEvent) {
                 oEvent.getSource().getParent().close();
             },
             onCreate: function () {
-                var oSo = oController.getView().byId("idSo").getValue();
+                var oSo = oController.getView().byId("idProdId").getValue();
                 if (oSo !== "") {
                     var oContext = oController.getView().byId("table0").getBinding("items")
                         .create({
-                            "prodId": oController.getView().byId("idSo").getValue(),
-                            "prodName": oController.byId("idCustName").getValue(),
-                            "prodType": oController.byId("idCustomer").getValue(),
-                            "uom": oController.byId("idPo").getValue(),
-                            "createdBy": oController.byId("idInqNumber").getValue()
+                            "prodId": oController.getView().byId("idProdId").getValue(),
+                            "prodName": oController.byId("idProdName").getValue(),
+                            "prodCat": oController.byId("idProdCat").getValue(),
+                            "prodType": oController.byId("idProdType").getValue(),
+                            "uom": oController.byId("idUom").getValue(),
+                            "createdBy": user,
+                            "active": oController.byId("ActiveSwitch").getState()
                         });
 
                     // Note: This promise fails only if the transient entity is deleted
                     oContext.created().then(function () {
                         oController.getView().byId("OpenDialog").close();
-                        MessageBox.show("Successfully Created");
+                        MessageBox.success("Successfully Created");
                     }, function (oError) {
                         console.log(oError);
                     });
                 } else {
-                    MessageBox.show("Please Enter User and Password!");
+                    MessageBox.error("Product Id Cannot be blank!");
                 }
-
             },
             onNewInventory: function () {
                 oController.getView().byId("OpenDialogInv").open();
@@ -116,46 +125,7 @@ sap.ui.define([
                 var oBinding = oTable.getBinding("items");
                 oBinding.filter(aFilter);
             },
-            onCreateInv: function () {
-                const sprodId = this.byId("combobox1").getSelectedItem().getKey();
-                if (sprodId !== "") {
-
-                    var currentdate = new Date();
-                    var datetime = "Last Sync: " + currentdate.getDate() + "/"
-                        + (currentdate.getMonth() + 1) + "/"
-                        + currentdate.getFullYear() + " T "
-                        + currentdate.getHours() + ":"
-                        + currentdate.getMinutes() + ":"
-                        + currentdate.getSeconds();
-
-                    var InvData = {
-                        "prodId": sprodId,
-                        "prodName": this.byId("combobox1").getSelectedItem(),
-                        "prodCat": oController.byId("idCustNameInv").getValue(),
-                        "prodType": oController.byId("idCustomerInv").getValue(),
-                        "uom": oController.byId("idPoInv").getValue(),
-                        "addedOn": datetime,
-                        "addedBy": data[0].username,
-                        "qty": oController.byId("idQtyInv").getValue(),
-                        "expDat": oController.byId("DP2").getValue(),
-                        "batch": oController.byId("idBatchInv").getValue()
-                    };
-
-                    var oContext = oController.getView().byId("table0").getBinding("items")
-                        .create(InvData);
-
-                    // Note: This promise fails only if the transient entity is deleted
-                    oContext.created().then(function () {
-                        oController.getView().byId("OpenDialogInv").close();
-                        MessageBox.show("Successfully Created");
-                    }, function (oError) {
-                        console.log(oError);
-                    });
-                } else {
-                    MessageBox.show("Please choose Product!");
-                }
-
-            },
+            
             onComboChange: function (oEvent) {
 
                 const sprodId = this.byId("combobox1").getSelectedItem().getKey();

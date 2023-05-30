@@ -1,54 +1,89 @@
 namespace cap_inventory;
 
-using {managed} from '@sap/cds/common';
+using {
+    managed,
+    cuid
+} from '@sap/cds/common';
 
 entity Userdetail {
     key username : String
-        @title : 'Username';
+        @title: 'Username';
         password : String
-        @title : 'Password';
+        @title: 'Password';
         email    : String
-        @title : 'Email';
+        @title: 'Email';
         image    : LargeString
-        @title : 'Image';
+        @title: 'Image';
 }
 
 entity ProductMaster : managed {
     key prodId   : String
-        @title : 'Product ID';
+        @title: 'Product ID';
         prodCat  : String
-        @title : 'Product Category';
+        @title: 'Product Category';
         prodName : String
-        @title : 'Product Name';
+        @title: 'Product Name';
         prodType : String
-        @title : 'Product Type';
+        @title: 'Product Type';
         uom      : String
-        @title : 'UOM';
+        @title: 'UOM';
+        qty      : String;
         active   : Boolean
-        @title : 'Active';
-        qty      : Integer
-        @title : 'Quantity';
-// productInv : Association to many ProductInv on productInv.productMaster = $self;
+        @title: 'Active';
 }
 
 entity ProductInv {
-        prodId   : String
-        @title : 'Product ID';
+    key prodId   : String
+        @title: 'Product ID';
+        prodName : String
+        @title: 'Product Name';
         prodCat  : String
-        @title : 'Product Category';
+        @title: 'Product Category';
         prodType : String
-        @title : 'Product Type';
+        @title: 'Product Type';
         uom      : String
-        @title : 'UOM';
+        @title: 'UOM';
     key addedOn  : String
-        @title : 'Added On';
+        @title: 'Added On';
         addedBy  : String
-        @title : 'Added By';
+        @title: 'Added By';
         qty      : String
-        @title : 'Qty';
+        @title: 'Qty';
         expDat   : String
-        @title : 'Expiry Date';
+        @title: 'Expiry Date';
         batch    : String
-        @title : 'Batch No';
-// productMaster : Association to one ProductMaster;
+        @title: 'Batch No';
+        stocks   : Integer
+        @title: 'Stocks';
+        status   : String
+        @title: 'Status'
+}
+
+entity StockTransfer : managed {
+    key stocktransId : UUID
+        @title: 'Stock Transfer ID';
+        storeId      : String
+        @title: 'Store ID';
+        prodId       : String
+        @title: 'Product ID';
+        prodCat      : String
+        @title: 'Product Category';
+        prodName     : String
+        @title: 'Product Name';
+        prodType     : String
+        @title: 'Product Type';
+        username     : String
+        @title: 'Username';
+        stocks       : Int32
+        @title: 'Stocks;';
+        addedOn     : String
+        @title: 'Added On';
+        StoreMaster  : Association to one StoreMaster;
+}
+
+entity StoreMaster : managed {
+    key storeId       : String;
+        storeName     : String;
+        StockTransfer : Association to many StockTransfer
+                            on StockTransfer.StoreMaster = $self;
 }

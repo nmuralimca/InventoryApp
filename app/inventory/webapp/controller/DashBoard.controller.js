@@ -1,12 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/core/Fragment"
-    //    "sap/m/MessageToast"
+    "sap/ui/core/Fragment",
+    "sap/ui/core/routing/History"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Fragment) {
+    function (Controller, Fragment, History) {
         "use strict";
 
         var oController, image, data;
@@ -23,6 +23,31 @@ sap.ui.define([
 
                 var shellbar = this.getView().byId('avatarId');
                 shellbar.setProperty("src", image);
+
+                var prodcat = [], stocks_cat = 0, name_cat;
+                var oData;
+                jQuery.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/UserService/TopSellingIndividualProduct()",
+                    dataType: "json",
+                    async: false,
+                    // @ts-ignore
+                    // @ts-ignore
+                    success: function (result, textStatus, jqXHR) {
+                        console.log("User details fetch is successful ");
+                       console.log(result)
+                        console.log(result['prodName']);
+                        var oFeedProd = oController.getView().byId("feed_prod");
+                        oFeedProd.setContentText(result.value.prodName);
+                        oFeedProd.setValue(result.value.stocks);
+                    },
+                    // @ts-ignore
+                    // @ts-ignore
+                    error: function (data, textStatus, jqXHR) {
+                        MessageBox.error("Error occurred in getting user details ");
+                    }
+                });
             },
             onAavtarPress: function (oEvent) {
 
@@ -52,7 +77,16 @@ sap.ui.define([
                 oController.getOwnerComponent().getRouter().navTo("RouteLogonView");
             },
             handleBackButtonPressed: function () {
-                oController.getOwnerComponent().getRouter().navTo("ProdView");
+                // oController.getOwnerComponent().getRouter().navTo("ProdView");
+                var oHistory = History.getInstance();
+                var sPreviousHash = oHistory.getPreviousHash();
+
+                if (sPreviousHash !== undefined) {
+                    window.history.go(-1);
+                } else {
+                    var oRouter = this.getOwnerComponent().getRouter();
+                    oRouter.navTo("ProdView", {}, true);
+                }
             },
         });
     });

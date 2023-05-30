@@ -10,23 +10,25 @@ xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core" xmlns:f
         <pages>
             <Page id="page" title="Product Inventory" titleAlignment="Center">
                 <content>
-                    <Table items="{/ProductInv}" id="table0"  selectionChange="onSelect">
+                    <Table items="{/ProductInv}" id="table0"  selectionChange="onSelect" growingThreshold="15" growing="true" alternateRowColors="true">
                         <headerToolbar>
                             <OverflowToolbar id="_IDGenOverflowToolbar1">
                                 <content>
                                     <ToolbarSpacer id="_IDGenToolbarSpacer1" />
-                                    <SearchField id="searchField" width="30%" placeholder="search Product Category" visible="true" liveChange=".onFilterPosts" />
-                                    <Button id="createButton" text="View Product" tooltip="New Product" visible="true" press="onOpenAddDialog">
+                                    <SearchField id="searchField" width="25%" placeholder="search Product Category" visible="true" liveChange=".onFilterPosts" />
+                                    <Button id="createButton" text="View Product" tooltip="New Product" visible="true" press="onOpenAddDialog" type="Emphasized">
                                         <!-- <layoutData>
                                             <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData1" priority="NeverOverflow" />
                                         </layoutData> -->
                                     </Button>
-                                    <Button id="CreateInvButton" text="Add Inventory" tooltip="Add Inventory" visible="true" press="onNewInventory">
+                                    <Button id="CreateInvButton" text="Add Inventory" tooltip="Add Inventory" visible="true" press="onNewInventory" type="Emphasized">
+                                    
                                         <!-- <layoutData>
                                             <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData2" priority="NeverOverflow" />
                                         </layoutData> -->
                                     </Button>
-                                    <Button id="DashboardButton" text="View Dashboard" tooltip="View Dash Board" visible="true" press="onViewDashBoard">
+                                    <Button id="StockButton" text="Transfer Stock" tooltip="Transfer Stock to Store" visible="true" press="onStockTransfer" type="Emphasized"/>
+                                    <Button id="DashboardButton" text="View Dashboard" tooltip="View Dash Board" visible="true" press="onViewDashBoard" type="Emphasized">
                                         <!-- <layoutData>
                                             <OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData_DASH" priority="NeverOverflow" />
                                         </layoutData> -->

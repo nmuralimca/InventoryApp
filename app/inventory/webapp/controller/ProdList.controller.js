@@ -14,7 +14,6 @@ sap.ui.define([
         var image, data, userdata;
         return Controller.extend("com.sap.inventory.controller.ProdList", {
             onInit: function () {
-
                 oController = this;
                 if (sap.ui.getCore().getModel("logonData") != undefined) {
                     data = sap.ui.getCore().getModel("logonData").getProperty("/userdet");
@@ -22,19 +21,11 @@ sap.ui.define([
                     image = data[0].img;
                     image = image.replace(/#/, ',');
                     console.log(image);
-
                 } else {
                     this.getOwnerComponent().getRouter().navTo("RouteLogonView");
                 }
-
-
                 var shellbar = this.getView().byId('avatarId');
                 shellbar.setProperty("src", image);
-
-                // this.getView().byId("combobox1").setFilterFunction(function (sTerm, oItem) {
-                //     // A case-insensitive 'string contains' filter
-                //     return oItem.getText().match(new RegExp(sTerm, "i")) || oItem.getKey().match(new RegExp(sTerm, "i"));
-                // });
             },
             onAavtarPress: function (oEvent) {
 
@@ -73,30 +64,6 @@ sap.ui.define([
             onCancelDialog: function (oEvent) {
                 oEvent.getSource().getParent().close();
             },
-            onCreate: function () {
-                var oSo = oController.getView().byId("idSo").getValue();
-                if (oSo !== "") {
-                    var oContext = oController.getView().byId("table0").getBinding("items")
-                        .create({
-                            "prodId": oController.byId("combobox1").selectedItem(),
-                            "prodName": oController.byId("idCustName").getValue(),
-                            "prodType": oController.byId("idCustomer").getValue(),
-                            "uom": oController.byId("idPo").getValue(),
-                            "createdBy": oController.byId("idInqNumber").getValue()
-                        });
-
-                    // Note: This promise fails only if the transient entity is deleted
-                    oContext.created().then(function () {
-                        oController.getView().byId("OpenDialog").close();
-                        MessageBox.show("Successfully Created");
-                    }, function (oError) {
-                        console.log(oError);
-                    });
-                } else {
-                    MessageBox.show("Please Enter User and Password!");
-                }
-
-            },
             onNewInventory: function () {
                 oController.getView().byId("OpenDialogInv").open();
             },
@@ -105,6 +72,9 @@ sap.ui.define([
             },
             onViewDashBoard: function () {
                 oController.getOwnerComponent().getRouter().navTo("DashBoard");
+            },
+            onStockTransfer: function (){
+                oController.getOwnerComponent().getRouter().navTo("StockTransfer");
             },
             onFilterPosts: function (oEvent) {
                 // build filter array
@@ -125,7 +95,7 @@ sap.ui.define([
                     var currentdate = new Date();
                     var datetime = currentdate.getDate() + "/"
                         + (currentdate.getMonth() + 1) + "/"
-                        + currentdate.getFullYear() + " T "
+                        + currentdate.getFullYear() + "T"
                         + currentdate.getHours() + ":"
                         + currentdate.getMinutes() + ":"
                         + currentdate.getSeconds();
@@ -146,12 +116,12 @@ sap.ui.define([
                     // Note: This promise fails only if the transient entity is deleted
                     oContext.created().then(function () {
                         oController.getView().byId("OpenDialogInv").close();
-                        MessageBox.show("Successfully Created");
+                        MessageBox.success("Successfully Created");
                     }, function (oError) {
                         console.log(oError);
                     });
                 } else {
-                    MessageBox.show("Please choose Product!");
+                    MessageBox.error("Please choose Product!");
                 }
 
             },
