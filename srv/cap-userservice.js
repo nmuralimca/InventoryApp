@@ -76,33 +76,7 @@ module.exports = cds.service.impl(async (srv) => {
 
     });
 
-    // srv.on('getStockIncreaseMoM', async () => {
-    //     const { StockTransfer } = srv.entities;
-
-    //     const currentDate = new Date();
-    //     const currentMonth = currentDate.getMonth() + 1; // Adding 1 because months are zero-based
-
-    //     const previousMonth = currentMonth - 1;
-    //     const currentYear = currentDate.getFullYear();
-
-    //     const currentMonthStock = await SELECT.from(StockTransfer)
-    //       .columns('stocks')
-    //       .where(`MONTH(createdAt) = ${currentMonth} AND YEAR(createdAt) = ${currentYear}`)
-    //       .execute();
-
-    //     const previousMonthStock = await SELECT.from(StockTransfer)
-    //       .columns('stocks')
-    //       .where(`MONTH(createdAt) = ${previousMonth} AND YEAR(createdAt) = ${currentYear}`)
-    //       .execute();
-
-    //     const currentStockSum = currentMonthStock.reduce((sum, entry) => sum + entry.stocks, 0);
-    //     const previousStockSum = previousMonthStock.reduce((sum, entry) => sum + entry.stocks, 0);
-
-    //     const stockIncreaseMoM = currentStockSum - previousStockSum;
-
-    //     return stockIncreaseMoM
-
-    //   });
+    
 
     srv.on('getStockIncreaseMoM', async (req) => {
         const currentDate = new Date();
@@ -138,8 +112,11 @@ module.exports = cds.service.impl(async (srv) => {
             console.log('========> Previous:', previousMonthStock);
             console.log('========> Stock Increase MoM:', stockIncreaseMoM);
             console.log('========> Percentage Change:', percentageChange);
-
+            let currentPeriod = currentYear + '-' + currentMonth;
+            let PreviousPeriod = previousYear + '-' + previousMonth;
             return {
+                currentPeriod,
+                PreviousPeriod,
                 stockIncreaseMoM,
                 percentageChange
             };
@@ -150,7 +127,20 @@ module.exports = cds.service.impl(async (srv) => {
     });
 
 
+    srv.on('TopStorewithStock', async (req) => {
+        const { StoreMaster, StockTransfer } = srv.entities;
 
+        const results = await SELECT.from(StockTransfer).columns(['storeId', 'SUM(stocks) as totalStocks']).groupBy('storeId')
+        .orderBy({ totalStocks: 'desc' }).limit(1);
+        
+        const sname = await SELECT.from(StoreMaster).columns(['storeName']).where({ storeId:results[0].storeId })
+
+    const storeId = results[0].storeId;
+    const storeName = sname[0].storeName;
+    const totalStocks = results[0].totalStocks;
+
+    return { storeId, storeName, totalStocks };
+    });
 
 });
 

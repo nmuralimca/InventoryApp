@@ -18,27 +18,33 @@
     <Page id="page" title="Analytics Dashboard" titleAlignment="Center">
         <content>
         <HBox id="_IDGenHbox1" justifyContent="Center" alignContent="Center" >
+           	<GenericTile id="_IDGenGenericTile" class="sapUiMediumMargin tileLayout" backgroundImage="./resources/analytics.jpg" >
+                <TileContent id="_IDGenTileContent6" footer="Report Available" frameType="OneByOne">
+                    <NewsContent id="_IDGenNewsContent1"
+                            contentText="Inventory Management: Realtime Analytics"/>
+                </TileContent>
+	        </GenericTile>
             <GenericTile id="_IDGenGenericTile1" class="sapUiMediumMargin tileLayout" header="Top Selling Individual Product" >
                 <TileContent id="_IDGenTileContent1" unit="Stocks" >			
                         <FeedContent id="feed_prod" valueColor="Good"/>
                 </TileContent>
             </GenericTile>
-            <GenericTile id="_IDGenGenericTile2" class="sapUiMediumMargin tileLayout" header="Top Selling Individual Product Category" press="onPress" >
+            <GenericTile id="_IDGenGenericTile2" class="sapUiMediumMargin tileLayout" header="Top Selling Product Category" press="onPress" >
                 <TileContent id="_IDGenTileContent2" unit="Stocks">			
                         <FeedContent id="feed_cat" valueColor="Good"/>
                 </TileContent>
             </GenericTile>
-            <GenericTile id="_IDGenGenericTile3" class="sapUiMediumMargin tileLayout" header="Top Selling Individual Product Type" press="onPress" >
+            <GenericTile id="_IDGenGenericTile3" class="sapUiMediumMargin tileLayout" header="Top Selling Product Type" press="onPress" >
                 <TileContent id="_IDGenTileContent3" unit="Stocks">			
                         <FeedContent id="feed_type" valueColor="Good"/>
                 </TileContent>
             </GenericTile>
-            <GenericTile id="generic" class="sapUiMediumMargin tileLayout" header="Change in Stocks Sold" press="onPress" >
+            <GenericTile id="generic" class="sapUiMediumMargin tileLayout" header="Change in Stocks" press="onPress" >
                 <TileContent id="_IDGenTileContent4" unit="Percent">
                     <NumericContent id="num_content" scale="%"  valueColor="Critical"  withMargin="false" />
                 </TileContent>
             </GenericTile>
-                        <GenericTile id="_IDGenGenericTile4" class="sapUiMediumMargin tileLayout" header="Store with Highest Transfered Stocks" >
+             <GenericTile id="_IDGenGenericTile4" class="sapUiMediumMargin tileLayout" header="Store with Highest Transfered Stocks" >
                 <TileContent id="_IDGenTileContent5" unit="Stocks" >			
                         <FeedContent id="feed_store" valueColor="Good"/>
                 </TileContent>

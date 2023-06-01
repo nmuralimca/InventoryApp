@@ -2,7 +2,7 @@
 .hiddenControls {
     height: 0px;
     overflow: hidden;
-    display:none;
+    display: none;
 }
 
 .imagePreview {
@@ -20,11 +20,13 @@
     z-index: 9999;
     transform: scale(1.2);
 }
-#fileUploader{
+
+#fileUploader {
     height: 0px;
     overflow: hidden;
 }
-#image{
+
+#image {
     width: 100px;
     height: 100px;
     position: relative;
@@ -42,9 +44,11 @@ button#container-com\.sap\.inventory---Logon--fileUploader-fu_button {
     overflow: hidden;
     height: 0px;
 }
-#vboxid{
+
+#vboxid {
     padding: 2em;
 }
+
 div#container-com\.sap\.inventory---Logon--image {
     margin: 0 3em;
     padding: 3e;
@@ -53,29 +57,116 @@ div#container-com\.sap\.inventory---Logon--image {
 div#__data15 {
     display: none;
 }
-#table0{
+
+#table0 {
     padding: 10%;
 }
 
 section#container-com\.sap\.inventory---LogonView--_IDGenPage1-cont {
-    background-image: url('../resources/graybg.jpg');
-    background-size: 100% 100%;
+    background-image: url('../resources/apple.jpg');
+    background-size: cover;
+    background-position: center;
 }
+
 .sapUiSizeCompact .sapFShellBar {
     height: 5.25rem;
 }
+
 .sapFShellBar .sapFShellBarHomeIcon {
     height: 5rem;
     vertical-align: middle
 }
+
 .sapFShellBar .sapFShellBarHomeIcon {
     max-height: 5rem;
 }
+
 button#__button1 {
     display: none;
 }
 
-.sapMPageBgStandard {
-    background-image: url('../resources/graybg.jpg');
-    background-size: 100% 100%;
+/* .sapMPageBgStandard {
+   padding: 1rem;
+} */
+.loginform {
+    background: #fff;
+    opacity: 0.9;
+    border-radius: 5px;
+    ;
+}
+
+.sapMLabelTextWrapper {
+    color: #000;
+}
+
+.sapMInputBaseContentWrapper {
+    background: #fff !important;
+    border: 1px solid #e5e5e5;
+    height: 2rem !important;
+}
+
+.btnblue.sapMBtn .sapMBtnInner {
+    background: #0066CC !important;
+    border: 1px solid #0066CC !important;
+
+}
+
+.btnblue.sapMBtn .sapMBtnContent {
+    color: #fff;
+
+}
+
+.btngray.sapMBtn .sapMBtnInner {
+    background: #dadada !important;
+    border: 1px solid #dadada !important;
+
+}
+
+.btngray.sapMBtn .sapMBtnContent {
+    color: #000;
+    font-family: “72”, “72full”, Arial, Helvetica, sans-serif;
+}
+
+.sapMBtn .sapMBtnContent {
+
+    line-height: 1.85rem;
+    font-family: “72”, “72full”, Arial, Helvetica, sans-serif;
+}
+
+.link {
+    color: #0066CC;
+}
+
+.sapMBtn {
+    height: 2.1rem !important;
+}
+
+.sapMBtn .sapMBtnInner {
+    padding: 0 1rem !important;
+    border-radius: 4px;
+    height: 1.9rem;
+}
+
+.sapMInputBaseContentWrapper {
+    border: 1px solid #a6a6a6 !important;
+    border-radius: 4px !important;
+}
+
+.logintitle {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #aaa;
+    font-family: “72”, “72full”, Arial, Helvetica, sans-serif !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 0.5rem;
+}
+
+.sapUiSizeCompact .sapMInputBase {
+    line-height: 1rem;
+    height: 2rem;
+}
+
+.sapMTitle,
+.sapMLabel,
+body {
+    font-family: “72”, “72full”, Arial, Helvetica, sans-serif !important;
 }

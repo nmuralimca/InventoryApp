@@ -4,23 +4,27 @@
     xmlns:fiori="sap.ui.webc.fiori" 
     xmlns="sap.m" xmlns:form="sap.ui.layout.form">
 
-    <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" />
+    <!-- <f:ShellBar id="_IDGenShellBar1" title="Inventory Management" homeIcon="./resources/Wipro.png" showCopilot="false" showSearch="true" showNotifications="false" showProductSwitcher="true" notificationsNumber="0" /> -->
     <App id="app">
         <Page id="_IDGenPage1" titleAlignment="Center">
             <content>
             <VBox id="vboxid1" fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
                  
-                <form:SimpleForm id="_IDGenSimpleForm1" editable="false" backgroundDesign="Solid" layout="ResponsiveGridLayout" adjustLabelSpan="true" labelSpanL="4" labelSpanM="4" labelSpanS="12" columnsL="1" columnsM="1" emptySpanL="4" emptySpanM="4">
+                <form:SimpleForm class="loginform" id="_IDGenSimpleForm1" editable="false" backgroundDesign="Solid" layout="ResponsiveGridLayout" adjustLabelSpan="true" labelSpanL="4" labelSpanM="4" labelSpanS="12" columnsL="1" columnsM="1" emptySpanL="4" emptySpanM="4">
                 <form:content>
+                <Title id="_IDGenTitle1" text="Login"  class="logintitle"/>
                         <!-- <Image id="_IDGenImage1" src="./resources/Wipro.png"/>    -->
                         <Label id="_IDGenLabel1" required="true" text="User Name" />
                         <Input id="inp_usernameId" />
                         <Label id="_IDGenLabel2" text="Password" required="true" />
                         <Input id="inp_passwordId" type="Password" />
                         <Label id="Label1" />
-                        <Button id="BtnLogin" text="Login" type="Accept" press="onLoginUser" />
-                        <Button id="Btnnewuser" text="Register" type="Accept" press="onOpenAddDialog" />
-                        <Button id="BtnForgetPwd" text="Forget Password" type="Accept" press="onForgetPwdDialog" />
+                        <Link class="link" id="BtnForgetPwd" text="Forget Password"  press="onForgetPwdDialog" />
+                        <Toolbar id="_IDGenToolbar1" ><ToolbarSpacer id="_IDGenToolbarSpacer1" /> <Button class="btngray" id="BtnLogin" text="Login"  press="onLoginUser" />
+                        <Button class="btnblue" id="Btnnewuser" text="Register" press="onOpenAddDialog" />
+                        </Toolbar>
+                        
+                     
                     </form:content>
                 </form:SimpleForm> 
             </VBox>

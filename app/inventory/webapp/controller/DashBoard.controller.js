@@ -36,11 +36,107 @@ sap.ui.define([
                     // @ts-ignore
                     success: function (result, textStatus, jqXHR) {
                         console.log("User details fetch is successful ");
-                       console.log(result)
+                        console.log(result)
                         console.log(result['prodName']);
                         var oFeedProd = oController.getView().byId("feed_prod");
                         oFeedProd.setContentText(result.value.prodName);
                         oFeedProd.setValue(result.value.stocks);
+                    },
+                    // @ts-ignore
+                    // @ts-ignore
+                    error: function (data, textStatus, jqXHR) {
+                        MessageBox.error("Error occurred in getting user details ");
+                    }
+                });
+
+                jQuery.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/UserService/TopSellingIndividualProductCategory()",
+                    dataType: "json",
+                    async: false,
+                    // @ts-ignore
+                    // @ts-ignore
+                    success: function (result, textStatus, jqXHR) {
+                        console.log("User details fetch is successful ");
+                        var oFeedProd = oController.getView().byId("feed_cat");
+                        oFeedProd.setContentText(result.value.prodCat);
+                        oFeedProd.setValue(result.value.totalStocks);
+                    },
+                    // @ts-ignore
+                    // @ts-ignore
+                    error: function (data, textStatus, jqXHR) {
+                        MessageBox.error("Error occurred in getting user details ");
+                    }
+                });
+
+                jQuery.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/UserService/TopSellingIndividualProductType()",
+                    dataType: "json",
+                    async: false,
+                    // @ts-ignore
+                    // @ts-ignore
+                    success: function (result, textStatus, jqXHR) {
+                        console.log("User details fetch is successful ");
+                        var oFeedProd = oController.getView().byId("feed_type");
+                        oFeedProd.setContentText(result.value.prodType);
+                        oFeedProd.setValue(result.value.totalStocks);
+                    },
+                    // @ts-ignore
+                    // @ts-ignore
+                    error: function (data, textStatus, jqXHR) {
+                        MessageBox.error("Error occurred in getting user details ");
+                    }
+                });
+
+                jQuery.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/UserService/getStockIncreaseMoM()",
+                    dataType: "json",
+                    async: false,
+                    // @ts-ignore
+                    // @ts-ignore
+                    success: function (result, textStatus, jqXHR) {
+                        console.log("User details fetch is successful ");
+                        const Fromdate = new Date(result.value.PreviousPeriod);
+                        const Todate = new Date(result.value.currentPeriod);
+                        const monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                        const fromMonth = `${monthName[Fromdate.getMonth()]}/${Fromdate.getFullYear()}`;
+                        const ToMonth = `${monthName[Todate.getMonth()]}/${Todate.getFullYear()}`;
+                        var oGeneric= oController.getView().byId("generic");
+                        oGeneric.setSubheader("(" + fromMonth + "-" + ToMonth + ")");
+                        var oFeedProd = oController.getView().byId("num_content");
+                        oFeedProd.setValue(result.value.percentageChange);
+                        var oNumContent= oController.getView().byId("num_content");
+                        if (result.value.percentageChange < 0) {
+                            oNumContent.setIndicator('Down');
+                        } else {
+                            oNumContent.setIndicator('Up');
+                        }
+                    },
+                    // @ts-ignore
+                    // @ts-ignore
+                    error: function (data, textStatus, jqXHR) {
+                        MessageBox.error("Error occurred in getting user details ");
+                    }
+                });
+
+                jQuery.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/UserService/TopStorewithStock()",
+                    dataType: "json",
+                    async: false,
+                    // @ts-ignore
+                    // @ts-ignore
+                    success: function (result, textStatus, jqXHR) {
+                        console.log("User details fetch is successful ");
+                        var oFeedProd = oController.getView().byId("feed_store");
+                        oFeedProd.setContentText(result.value.storeName);
+                        oFeedProd.setValue(result.value.totalStocks);
                     },
                     // @ts-ignore
                     // @ts-ignore

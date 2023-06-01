@@ -11,4 +11,5 @@ service UserService@(path:'/UserService'){
     function TopSellingIndividualProductType() returns String;
     function getStockIncreaseYoY() returns String;
     function getStockIncreaseMoM() returns String;
+    function TopStorewithStock() returns String;
 }
