@@ -90,7 +90,7 @@ sap.ui.define([
                             "prodType": oController.byId("idProdType").getValue(),
                             "uom": oController.byId("idUom").getValue(),
                             "createdBy": user,
-                            "active": oController.byId("ActiveSwitch").getState()
+                            // "active": oController.byId("ActiveSwitch").getState()
                         });
 
                     // Note: This promise fails only if the transient entity is deleted
